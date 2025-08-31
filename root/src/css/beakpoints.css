@@ -1,0 +1,16 @@
+/* FROM 250PX TO 600PX */
+
+@media (min-width: 15.625em) {
+}
+
+/* FROM 600PX TO 900PX */
+@media (min-width: 37.5em) {
+}
+
+/* FROM 900PX TO 1200PX */
+@media (min-width: 56.25em) {
+}
+
+/* FROM 1200PX TO 1400PX */
+@media (min-width: 75em) {
+}

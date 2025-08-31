@@ -1,0 +1,58 @@
+#palletteOuterContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /*  */
+  width: 100%;
+  margin: 1rem;
+}
+
+#palletteInnerContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  /*  */
+  width: 90%;
+}
+
+.color-box {
+  cursor: pointer;
+}
+
+/* BREAK POINTS */
+
+/* FROM 250PX TO 600PX */
+@media (min-width: 15.625em) {
+  .color-box {
+    width: 10rem;
+    height: 10rem;
+  }
+}
+
+/* FROM 600PX TO 900PX */
+@media (min-width: 37.5em) {
+  .color-box {
+    width: 10rem;
+    height: 10rem;
+  }
+}
+
+/* FROM 900PX TO 1200PX */
+@media (min-width: 56.25em) {
+  .color-box {
+    width: 16rem;
+    height: 16rem;
+  }
+}
+
+/* FROM 1200PX TO 1400PX */
+@media (min-width: 75em) {
+  .color-box {
+    width: 20rem;
+    height: 20rem;
+  }
+}
