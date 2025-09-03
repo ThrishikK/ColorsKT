@@ -1,4 +1,5 @@
-let colorsList = ["#03045e", "#0077b6", "#00b4d8", "#90e0ef", "#caf0f8"];
+import { savePalette, getPalette } from "../services/storage.js";
+import modalListenkeys, { closeModal } from "./modal.js";
 
 // ELEMENTS
 const palletteOuterContainer = document.getElementById(
@@ -7,6 +8,11 @@ const palletteOuterContainer = document.getElementById(
 const palletteInnerContainer = document.getElementById(
   "palletteInnerContainer"
 );
+const overlay = document.querySelector(".overlay");
+const btnCloseModal = document.querySelector(".close-modal");
+
+// FILE CODE
+let colorsList = getPalette();
 
 function generateRandomColor() {
   const r = Math.floor(Math.random() * 255);
@@ -23,11 +29,13 @@ function generatePallete() {
   for (let i = 0; i < 5; i++) {
     colorsList.push(generateRandomColor());
   }
+  savePalette(colorsList);
 }
 
 function addGenerateButton() {
   const palletteGeneratorButton = document.createElement("button");
   palletteGeneratorButton.textContent = "Generate New";
+  palletteGeneratorButton.classList.add("pallette-btn");
   palletteOuterContainer.appendChild(palletteGeneratorButton);
   // ADDING EVENT LISTENERT TO BUTTON
   palletteGeneratorButton.addEventListener("click", () => {
@@ -41,16 +49,26 @@ function addPallette(colorsList) {
   colorsList.map((value) => {
     const palletteColorBox = document.createElement("div");
     palletteColorBox.classList.add("color-box");
+    palletteColorBox.dataset.boxColor = value;
     palletteColorBox.style.backgroundColor = value;
 
     palletteInnerContainer.appendChild(palletteColorBox);
   });
-  palletteOuterContainer.appendChild(palletteInnerContainer);
 }
 
+// EVENT LISTENERS FROM MODAL.JS
+modalListenkeys.canvasEventListener();
+modalListenkeys.overlayEventListener();
+
+btnCloseModal.addEventListener("click", closeModal);
+overlay.addEventListener("click", closeModal);
+
 export function palletteContainerFun() {
+  palletteOuterContainer.appendChild(palletteInnerContainer);
+
   // ADDING PALLETTE
   addPallette(colorsList);
   //  ADDING  BUTTON
   addGenerateButton();
+  //
 }

@@ -23,6 +23,12 @@
   cursor: pointer;
 }
 
+.pallette-btn {
+  align-self: flex-end;
+  margin-right: 12.5rem;
+  margin-top: 1.5rem;
+}
+
 /* BREAK POINTS */
 
 /* FROM 250PX TO 600PX */
