@@ -8,6 +8,10 @@ const palletteOuterContainer = document.getElementById(
 const palletteInnerContainer = document.getElementById(
   "palletteInnerContainer"
 );
+const palletteButtonsContainer = document.getElementById(
+  "palletteButtonsContainer"
+);
+
 const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".close-modal");
 
@@ -36,13 +40,25 @@ function addGenerateButton() {
   const palletteGeneratorButton = document.createElement("button");
   palletteGeneratorButton.textContent = "Generate New";
   palletteGeneratorButton.classList.add("pallette-btn");
-  palletteOuterContainer.appendChild(palletteGeneratorButton);
+  palletteButtonsContainer.appendChild(palletteGeneratorButton);
   // ADDING EVENT LISTENERT TO BUTTON
   palletteGeneratorButton.addEventListener("click", () => {
     generatePallete();
     palletteInnerContainer.innerHTML = "";
     addPallette(colorsList);
   });
+}
+
+function addSavePalletteButton() {
+  const palletteSaveButton = document.createElement("button");
+  palletteSaveButton.textContent = "Save Pallette";
+  palletteSaveButton.classList.add("pallette-btn", "save-helper");
+  palletteButtonsContainer.appendChild(palletteSaveButton);
+}
+
+function addPalletteButtons() {
+  addSavePalletteButton();
+  addGenerateButton();
 }
 
 function addPallette(colorsList) {
@@ -68,7 +84,6 @@ export function palletteContainerFun() {
 
   // ADDING PALLETTE
   addPallette(colorsList);
-  //  ADDING  BUTTON
-  addGenerateButton();
-  //
+  //  ADDING  BUTTONS
+  addPalletteButtons();
 }

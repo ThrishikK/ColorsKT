@@ -1,4 +1,4 @@
-const canvas = document.getElementById("myCanvas");
+const canvas = document.getElementById("barGraph");
 
 const ctx = canvas.getContext("2d");
 canvas.height = 350;

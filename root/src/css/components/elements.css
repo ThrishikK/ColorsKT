@@ -19,3 +19,18 @@ button {
 button:hover {
   background-color: rgba(10, 28, 65, 0.95);
 }
+
+.active-btn {
+  background-color: rgb(10, 28, 65);
+  color: white;
+}
+
+.passive-btn {
+  color: rgb(10, 28, 65);
+  background-color: white;
+  border: 0.1rem solid rgb(10, 28, 65);
+}
+
+.passive-btn:hover {
+  background-color: aliceblue;
+}
