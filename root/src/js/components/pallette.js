@@ -1,4 +1,7 @@
-import { savePalette, getPalette } from "../services/storage.js";
+import initialPallette, {
+  savePalette,
+  getPalette,
+} from "../services/storage.js";
 import modalListenkeys, { closeModal } from "./modal.js";
 
 // ELEMENTS
@@ -16,15 +19,15 @@ const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".close-modal");
 
 // FILE CODE
-let colorsList = getPalette();
+let colorsList = initialPallette;
 
+// RANDOM COLOR GENERATION
 function generateRandomColor() {
   const r = Math.floor(Math.random() * 255);
   const g = Math.floor(Math.random() * 255);
   const b = Math.floor(Math.random() * 255);
 
   const colorGenerated = `rgb(${r},${g},${b})`;
-  console.log(colorGenerated);
   return colorGenerated;
 }
 
@@ -33,7 +36,6 @@ function generatePallete() {
   for (let i = 0; i < 5; i++) {
     colorsList.push(generateRandomColor());
   }
-  savePalette(colorsList);
 }
 
 function addGenerateButton() {
@@ -54,8 +56,13 @@ function addSavePalletteButton() {
   palletteSaveButton.textContent = "Save Pallette";
   palletteSaveButton.classList.add("pallette-btn", "save-helper");
   palletteButtonsContainer.appendChild(palletteSaveButton);
+  // ADDING EVENT LISTENERT TO BUTTON
+  palletteSaveButton.addEventListener("click", () => {
+    savePalette(colorsList);
+  });
 }
 
+// ADDING 2 BUTTONS
 function addPalletteButtons() {
   addSavePalletteButton();
   addGenerateButton();

@@ -10,27 +10,27 @@ button {
   font-weight: 600;
   font-family: inherit;
   font-size: 1.4rem;
-  background-color: rgb(10, 28, 65);
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-background);
   border: 0;
   border-radius: 0.4rem;
 }
 
 button:hover {
-  background-color: rgba(10, 28, 65, 0.95);
+  background-color: var(--color-primary);
 }
 
 .active-btn {
-  background-color: rgb(10, 28, 65);
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-background);
 }
 
 .passive-btn {
-  color: rgb(10, 28, 65);
-  background-color: white;
-  border: 0.1rem solid rgb(10, 28, 65);
+  color: var(--color-primary);
+  background-color: var(--color-background);
+  border: 0.1rem solid var(--color-primary);
 }
 
 .passive-btn:hover {
-  background-color: aliceblue;
+  background-color: var(--color-background);
 }

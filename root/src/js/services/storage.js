@@ -1,10 +1,28 @@
-let colorsList = ["#03045e", "#0077b6", "#00b4d8", "#90e0ef", "#caf0f8"];
+let initialPallette = [
+  "rgb(3, 4, 94)",
+  "rgb(0, 119, 182)",
+  "rgb(0, 180, 216)",
+  "rgb(144, 224, 239)",
+  "rgb(202, 240, 248)",
+];
+
+// Try to load from localStorage
+let storedData = JSON.parse(localStorage.getItem("colorPalette"));
+
+let storageObject = storedData || {
+  initialPallette,
+  savedPallettes: [],
+};
+
+export default initialPallette;
 
 export function savePalette(palette) {
-  localStorage.setItem("colorPalette", JSON.stringify(palette));
+  storageObject.savedPallettes.push(palette);
+  localStorage.setItem("colorPalette", JSON.stringify(storageObject));
+  console.log(storageObject);
 }
 
 export function getPalette() {
   const palette = localStorage.getItem("colorPalette");
-  return palette ? JSON.parse(palette) : colorsList;
+  return palette ? palette : null;
 }

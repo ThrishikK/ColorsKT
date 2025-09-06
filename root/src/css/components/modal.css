@@ -7,7 +7,7 @@
   top: 1.2rem;
   right: 2rem;
   font-size: 5rem;
-  color: #333;
+  color: var(--color-grey);
   cursor: pointer;
   border: none;
   background: none;
@@ -15,8 +15,8 @@
 }
 
 .close-modal:hover {
-  color: rgb(10, 28, 65);
-  background-color: white;
+  color: var(--color-primary);
+  background-color: var(--color-background);
 }
 
 .modal {
@@ -25,7 +25,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  background-color: white;
+  background-color: var(--color-background);
   padding: 6.5rem;
   border-radius: 5px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
