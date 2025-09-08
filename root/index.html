@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="src/css/components/helpers.css" />
     <link rel="stylesheet" href="src/css/components/elements.css" />
     <link rel="stylesheet" href="src/css/components/pallette.css" />
+    <link rel="stylesheet" href="src/css/components/savedPallettes.css" />
     <link rel="stylesheet" href="src/css/components/modal.css" />
   </head>
   <body>
@@ -18,40 +19,44 @@
         class="flex-column section-container"
       >
         <h2>Pallette</h2>
-        <div id="palletteInnerContainer" class="flex-row"></div>
-        <!-- MODAL START -->
-        <div class="modal hidden">
-          <button class="close-modal">&times;</button>
-          <!-- CANVAS ELEMENTS -->
-          <div class="flex-column canvas-btns-container">
-            <button
-              class="canvas-btn canvas-btn-bar active-btn"
-              data-canvas-type="bar"
-            >
-              Bar
-            </button>
-            <button
-              class="canvas-btn canvas-btn-pie passive-btn"
-              data-canvas-type="pie"
-            >
-              Pie
-            </button>
-          </div>
-          <canvas id="barGraph" class="hidden">
-            Your browser does not support the canvas element.
-          </canvas>
-          <canvas id="pieGraph" class="hidden">
-            Your browser does not support the canvas element.
-          </canvas>
-        </div>
-        <div class="overlay hidden"></div>
-        <!-- MODAL END -->
+        <div
+          id="palletteInnerContainer"
+          class="flex-row pallette-inner-container"
+        ></div>
+
         <div id="palletteButtonsContainer" class="flex-row"></div>
       </section>
       <!--SAVED SECTION  -->
       <section id="savedOuterContainer" class="flex-column section-container">
         <h2>Saved Pallettes</h2>
       </section>
+      <!-- MODAL START -->
+      <div class="modal hidden">
+        <button class="close-modal">&times;</button>
+        <!-- CANVAS ELEMENTS -->
+        <div class="flex-column canvas-btns-container">
+          <button
+            class="canvas-btn canvas-btn-bar active-btn"
+            data-canvas-type="bar"
+          >
+            Bar
+          </button>
+          <button
+            class="canvas-btn canvas-btn-pie passive-btn"
+            data-canvas-type="pie"
+          >
+            Pie
+          </button>
+        </div>
+        <canvas id="barGraph" class="hidden">
+          Your browser does not support the canvas element.
+        </canvas>
+        <canvas id="pieGraph" class="hidden">
+          Your browser does not support the canvas element.
+        </canvas>
+      </div>
+      <div class="overlay hidden"></div>
+      <!-- MODAL END -->
     </main>
 
     <script type="module" src="src/js/main.js"></script>

@@ -1,9 +1,6 @@
-import initialPallette, {
-  savePalette,
-  getPalette,
-} from "../services/storage.js";
-import modalListenkeys, { closeModal } from "./modal.js";
-
+import initialPallette, { savePalette } from "../services/storage.js";
+import { generatePallete, addPalletteFunction } from "../services/functions.js";
+import modalListenkeys from "./modal.js";
 // ELEMENTS
 const palletteOuterContainer = document.getElementById(
   "palletteOuterContainer"
@@ -15,28 +12,8 @@ const palletteButtonsContainer = document.getElementById(
   "palletteButtonsContainer"
 );
 
-const overlay = document.querySelector(".overlay");
-const btnCloseModal = document.querySelector(".close-modal");
-
 // FILE CODE
 let colorsList = initialPallette;
-
-// RANDOM COLOR GENERATION
-function generateRandomColor() {
-  const r = Math.floor(Math.random() * 255);
-  const g = Math.floor(Math.random() * 255);
-  const b = Math.floor(Math.random() * 255);
-
-  const colorGenerated = `rgb(${r},${g},${b})`;
-  return colorGenerated;
-}
-
-function generatePallete() {
-  colorsList = [];
-  for (let i = 0; i < 5; i++) {
-    colorsList.push(generateRandomColor());
-  }
-}
 
 function addGenerateButton() {
   const palletteGeneratorButton = document.createElement("button");
@@ -47,7 +24,7 @@ function addGenerateButton() {
   palletteGeneratorButton.addEventListener("click", () => {
     generatePallete();
     palletteInnerContainer.innerHTML = "";
-    addPallette(colorsList);
+    addPalletteFunction(palletteInnerContainer, colorsList);
   });
 }
 
@@ -68,29 +45,14 @@ function addPalletteButtons() {
   addGenerateButton();
 }
 
-function addPallette(colorsList) {
-  colorsList.map((value) => {
-    const palletteColorBox = document.createElement("div");
-    palletteColorBox.classList.add("color-box");
-    palletteColorBox.dataset.boxColor = value;
-    palletteColorBox.style.backgroundColor = value;
-
-    palletteInnerContainer.appendChild(palletteColorBox);
-  });
-}
-
-// EVENT LISTENERS FROM MODAL.JS
-modalListenkeys.canvasEventListener();
-modalListenkeys.overlayEventListener();
-
-btnCloseModal.addEventListener("click", closeModal);
-overlay.addEventListener("click", closeModal);
-
 export function palletteContainerFun() {
   palletteOuterContainer.appendChild(palletteInnerContainer);
 
   // ADDING PALLETTE
-  addPallette(colorsList);
+  addPalletteFunction(palletteInnerContainer, colorsList);
+  // ADDING EVENT LISTENER
+  modalListenkeys.canvasEventListener(palletteInnerContainer);
+
   //  ADDING  BUTTONS
   addPalletteButtons();
 }

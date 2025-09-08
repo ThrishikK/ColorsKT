@@ -24,5 +24,5 @@ export function savePalette(palette) {
 
 export function getPalette() {
   const palette = localStorage.getItem("colorPalette");
-  return palette ? palette : null;
+  return palette ? JSON.parse(palette) : null;
 }

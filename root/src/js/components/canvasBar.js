@@ -24,7 +24,7 @@ function drawAxis() {
   for (let i = 0; i <= 255; i += 51) {
     ctx.moveTo(50, 45 + i);
     ctx.lineTo(350, 45 + i);
-    console.log(45 + i);
+    // console.log(45 + i);
     writeText(255 - i, 15, "black", 20, 50 + i);
   }
   ctx.stroke();
@@ -38,7 +38,7 @@ function drawColorBars(r, g, b) {
   ];
 
   values.forEach((record) => {
-    console.log(record);
+    // console.log(record);
     ctx.fillStyle = record.color;
     ctx.fillRect(record.x, record.y, record.width, record.height);
     writeText(
@@ -65,7 +65,7 @@ function hexToRgb(hex) {
 }
 
 export function drawBars(r = 125, g = 75, b = 256) {
-  console.log(r, g, b);
+  // console.log(r, g, b);
   // clear
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   // background

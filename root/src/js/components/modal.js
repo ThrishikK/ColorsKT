@@ -20,11 +20,11 @@ function extraction(colorCode) {
 }
 
 function addingHiddenClasses(type, other) {
-  console.log(type, other);
+  // console.log(type, other);
   const selectecdCanvas = document.getElementById(`${type}Graph`);
   const nonSelectecdCanvas = document.getElementById(`${other}Graph`);
-  console.log(selectecdCanvas);
-  console.log(nonSelectecdCanvas);
+  // console.log(selectecdCanvas);
+  // console.log(nonSelectecdCanvas);
 
   const activeBtn = document.querySelector(`.canvas-btn-${type}`);
   const passiveBtn = document.querySelector(`.canvas-btn-${other}`);
@@ -40,7 +40,7 @@ function addingHiddenClasses(type, other) {
 }
 
 function openModal(val, type) {
-  console.log(type);
+  // console.log(type);
   let colorCode = val;
   let { r, g, b } = extraction(colorCode);
 
@@ -72,7 +72,7 @@ export function closeModal() {
   overlay.classList.add("hidden");
 }
 
-function canvasEventListener() {
+function canvasEventListener(palletteInnerContainer) {
   palletteInnerContainer.addEventListener("click", function (e) {
     if (e.target.classList.contains("color-box")) {
       selectedBox = e.target.dataset.boxColor;

@@ -6,6 +6,15 @@
 }
 
 #palletteInnerContainer {
+  /* flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  /*  */
+  /* width: 90%; */
+}
+
+.pallette-inner-container {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
