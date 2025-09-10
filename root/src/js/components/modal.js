@@ -1,6 +1,7 @@
 "use strict";
 import { drawBars } from "./canvasBar.js";
 import { drawRgbPie } from "./canvasPie.js";
+import { extraction } from "../services/functions.js";
 
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
@@ -9,15 +10,6 @@ const canvasBtnsContainer = document.querySelector(".canvas-btns-container");
 let selectedBox = "";
 let selectedChart = "bar";
 let other = "pie";
-
-function extraction(colorCode) {
-  colorCode = colorCode.replace("rgb(", "").replace(")", "").split(",");
-  let r = parseInt(colorCode[0]);
-  let g = parseInt(colorCode[1]);
-  let b = parseInt(colorCode[2]);
-
-  return { r, g, b };
-}
 
 function addingHiddenClasses(type, other) {
   // console.log(type, other);

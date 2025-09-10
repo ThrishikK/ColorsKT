@@ -51,19 +51,6 @@ function drawColorBars(r, g, b) {
   });
 }
 
-function hexToRgb(hex) {
-  hex = hex.trim();
-  if (hex[0] === "#") hex = hex.slice(1);
-  if (hex.length === 3)
-    hex = hex
-      .split("")
-      .map((c) => c + c)
-      .join("");
-  if (!/^[0-9a-fA-F]{6}$/.test(hex)) return null;
-  const n = parseInt(hex, 16);
-  return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
-}
-
 export function drawBars(r = 125, g = 75, b = 256) {
   // console.log(r, g, b);
   // clear

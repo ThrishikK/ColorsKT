@@ -5,14 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ColorsKt</title>
     <link rel="stylesheet" href="src/css/main.css" />
+    <link rel="stylesheet" href="src/css/components/navbar.css" />
     <link rel="stylesheet" href="src/css/components/helpers.css" />
     <link rel="stylesheet" href="src/css/components/elements.css" />
     <link rel="stylesheet" href="src/css/components/pallette.css" />
     <link rel="stylesheet" href="src/css/components/savedPallettes.css" />
     <link rel="stylesheet" href="src/css/components/modal.css" />
+    <link rel="stylesheet" href="src/css/components/tintsAndShades.css" />
   </head>
   <body>
     <main>
+      <!-- NAVBAR -->
+      <section id="navbarOuterContainer">
+        <!-- FOR FUTURE -->
+        <div></div>
+        <div class="themeCanvasContainer">
+          <canvas id="themeCanvas" width="50" height="50"></canvas>
+        </div>
+      </section>
       <!-- PALLETTE SECTION-->
       <section
         id="palletteOuterContainer"
@@ -29,6 +39,14 @@
       <!--SAVED SECTION  -->
       <section id="savedOuterContainer" class="flex-column section-container">
         <h2>Saved Pallettes</h2>
+        <!-- <button class="prev">&#10094;</button> -->
+      </section>
+      <!-- TINTS AND SHADES SECTION -->
+      <section
+        id="tintsAndShadesOuterContainer"
+        class="flex-column section-container"
+      >
+        <h2>Tints and Shades of Generated Pallette</h2>
       </section>
       <!-- MODAL START -->
       <div class="modal hidden">

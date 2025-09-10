@@ -7,6 +7,13 @@
   --font-family-secondary: "Roboto", sans-serif;
 }
 
+body.dark {
+--color-primary: #4a90e2;     /* bright blue for accents */
+--color-background: #121212;  /* very dark gray, not pure black */
+--color-text: #ecf0f1;        /* light gray/white for readability */
+
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -22,6 +29,8 @@ body {
   width: 100%;
   background-color: var(--color-background);
   /*  */
+    transition: background-color 0.3s, color 0.3s;
+
 }
 
 main {

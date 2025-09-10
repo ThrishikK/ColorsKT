@@ -25,7 +25,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  background-color: var(--color-background);
+  background-color: #ecf0f1;
   padding: 6.5rem;
   border-radius: 5px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);

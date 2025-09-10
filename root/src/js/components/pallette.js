@@ -22,7 +22,7 @@ function addGenerateButton() {
   palletteButtonsContainer.appendChild(palletteGeneratorButton);
   // ADDING EVENT LISTENERT TO BUTTON
   palletteGeneratorButton.addEventListener("click", () => {
-    generatePallete();
+    colorsList = generatePallete();
     palletteInnerContainer.innerHTML = "";
     addPalletteFunction(palletteInnerContainer, colorsList);
   });

@@ -1,6 +1,13 @@
 h2 {
   font-size: 2rem;
   margin: 1rem 0;
+  color: var(--color-primary);
+}
+
+p {
+  font-size: 1.6rem;
+  margin: 1rem 0;
+  color: var(--color-primary);
 }
 
 button {

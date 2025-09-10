@@ -1,3 +1,5 @@
+import { savedPallettesContainerFun } from "../components/savedPallette.js";
+
 let initialPallette = [
   "rgb(3, 4, 94)",
   "rgb(0, 119, 182)",
@@ -12,6 +14,7 @@ let storedData = JSON.parse(localStorage.getItem("colorPalette"));
 let storageObject = storedData || {
   initialPallette,
   savedPallettes: [],
+  theme: "light",
 };
 
 export default initialPallette;
@@ -20,6 +23,7 @@ export function savePalette(palette) {
   storageObject.savedPallettes.push(palette);
   localStorage.setItem("colorPalette", JSON.stringify(storageObject));
   console.log(storageObject);
+  savedPallettesContainerFun();
 }
 
 export function getPalette() {

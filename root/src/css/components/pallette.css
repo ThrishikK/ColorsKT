@@ -23,6 +23,10 @@
   width: 90%;
 }
 
+.color-box-container {
+  align-items: center;
+}
+
 #palletteButtonsContainer {
   width: 90%;
   /*  */
