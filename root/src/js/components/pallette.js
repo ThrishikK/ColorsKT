@@ -1,4 +1,4 @@
-import initialPallette, { savePalette } from "../services/storage.js";
+import { savePalette } from "../services/storage.js";
 import { generatePallete } from "../services/colorsRelated.js";
 import { addPalletteFunction } from "../services/functions.js";
 import modalListenkeys from "./modal.js";
@@ -14,11 +14,10 @@ const palletteButtonsContainer = document.getElementById(
 );
 
 // FILE CODE
-let colorsList =
-  JSON.parse(localStorage.getItem("colorPalette"))?.initialPallette ||
-  initialPallette;
-// console.log(colorsList);
-
+let colorsList = JSON.parse(
+  localStorage.getItem("colorPalette")
+)?.initialPallette;
+// FUNCTION TO ERASE AND RE-GENERATE PALLETTE
 function erasingPalletteDOM() {
   colorsList = generatePallete();
   console.log(JSON.parse(localStorage.getItem("colorPalette")));

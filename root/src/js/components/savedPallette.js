@@ -16,7 +16,8 @@ let savedPallettes;
 function paintingSavedDOM() {
   let object = getPalette();
   savedPallettes = object.savedPallettes;
-  if (savedPallettes) {
+  console.log(savedPallettes);
+  if (savedPallettes.length > 0) {
     palletteSavedOuterContainer.appendChild(innerPalletteContainer);
     // ADDING LEFT BUTTON
     addCarouselButton(
@@ -39,6 +40,11 @@ function paintingSavedDOM() {
       "&#10095;",
       "next"
     );
+  } else {
+    const message = document.createElement("h3");
+    message.textContent = "No Saved Palettes";
+    message.classList.add("no-saved-message");
+    palletteSavedOuterContainer.appendChild(message);
   }
 }
 

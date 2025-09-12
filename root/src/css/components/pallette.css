@@ -53,6 +53,11 @@
   align-self: flex-start;
 }
 
+.no-saved-message {
+  border: 2px solid var(--color-primary);
+  padding: 1rem;
+}
+
 /* BREAK POINTS */
 
 /* FROM 250PX TO 600PX */

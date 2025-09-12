@@ -4,7 +4,7 @@ import { updatingLocalStorage } from "./storage.js";
 import { canvasGradientFun } from "../components/canvasGradient.js";
 
 export function extraction(colorCode) {
-  console.log(colorCode);
+  // console.log(colorCode);
   colorCode = colorCode.replace("rgb(", "").replace(")", "").split(",");
   let r = parseInt(colorCode[0]);
   let g = parseInt(colorCode[1]);

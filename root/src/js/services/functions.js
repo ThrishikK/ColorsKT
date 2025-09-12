@@ -5,22 +5,45 @@ import { palletteContainerFun } from "../components/pallette.js";
 
 // let colorsList = [];
 
-function handleLockClick(e) {
-  if (e.target.classList.contains("lock-icon")) {
-    const lockIconIndex = e.target.dataset.lockIconIndex;
+// 😀😁😂🤣😃😄😅😆
+// function handleLockClick(e) {
+//   if (e.target.classList.contains("lock-icon")) {
+//     const lockIconIndex = e.target.dataset.lockIconIndex;
 
-    updatingLocalStorage(colorsList, lockIconIndex);
-    console.log("Calling Palette Function");
-    palletteContainerFun();
+//     updatingLocalStorage(colorsList, lockIconIndex);
+//     console.log("Calling Palette Function");
+//     palletteContainerFun();
+//   }
+// }
+
+// function lockIconEventListener(container) {
+//   container.addEventListener("click", handleLockClick);
+// }
+// 😀😁😂🤣😃😄😅😆
+
+// keep a reference outside so it survives across calls
+let lockHandlerRef = null;
+
+function lockIconEventListener(container, colorsList) {
+  // If handler already exists, remove it first
+  if (lockHandlerRef) {
+    container.removeEventListener("click", lockHandlerRef);
   }
-}
 
-function lockIconEventListener(container) {
-  container.addEventListener("click", handleLockClick);
-}
+  // Create new handler with latest colorsList
+  lockHandlerRef = function (e) {
+    if (e.target.classList.contains("lock-icon")) {
+      const lockIconIndex = e.target.dataset.lockIconIndex;
 
-// Later, when you want to remove it:
-// container.removeEventListener("click", handleLockClick);
+      updatingLocalStorage(colorsList, lockIconIndex);
+      console.log("Calling Palette Function");
+      palletteContainerFun();
+    }
+  };
+
+  // Add the new one
+  container.addEventListener("click", lockHandlerRef);
+}
 
 export function addPalletteFunction(
   palletteInnerContainer,
@@ -64,8 +87,7 @@ export function addPalletteFunction(
   });
   // ADDING LOCK ICON EVENT LISTENER
   if (lockIcon) {
-    palletteInnerContainer.removeEventListener("click", handleLockClick);
-    lockIconEventListener(palletteInnerContainer);
+    lockIconEventListener(palletteInnerContainer, colorsList);
   }
 }
 
