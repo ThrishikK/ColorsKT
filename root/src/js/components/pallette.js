@@ -1,5 +1,6 @@
 import initialPallette, { savePalette } from "../services/storage.js";
-import { generatePallete, addPalletteFunction } from "../services/functions.js";
+import { generatePallete } from "../services/colorsRelated.js";
+import { addPalletteFunction } from "../services/functions.js";
 import modalListenkeys from "./modal.js";
 // ELEMENTS
 const palletteOuterContainer = document.getElementById(
@@ -13,7 +14,17 @@ const palletteButtonsContainer = document.getElementById(
 );
 
 // FILE CODE
-let colorsList = initialPallette;
+let colorsList =
+  JSON.parse(localStorage.getItem("colorPalette"))?.initialPallette ||
+  initialPallette;
+// console.log(colorsList);
+
+function erasingPalletteDOM() {
+  colorsList = generatePallete();
+  console.log(JSON.parse(localStorage.getItem("colorPalette")));
+  palletteInnerContainer.innerHTML = "";
+  addPalletteFunction(palletteInnerContainer, colorsList, true);
+}
 
 function addGenerateButton() {
   const palletteGeneratorButton = document.createElement("button");
@@ -21,11 +32,7 @@ function addGenerateButton() {
   palletteGeneratorButton.classList.add("pallette-btn");
   palletteButtonsContainer.appendChild(palletteGeneratorButton);
   // ADDING EVENT LISTENERT TO BUTTON
-  palletteGeneratorButton.addEventListener("click", () => {
-    colorsList = generatePallete();
-    palletteInnerContainer.innerHTML = "";
-    addPalletteFunction(palletteInnerContainer, colorsList);
-  });
+  palletteGeneratorButton.addEventListener("click", erasingPalletteDOM);
 }
 
 function addSavePalletteButton() {
@@ -46,10 +53,13 @@ function addPalletteButtons() {
 }
 
 export function palletteContainerFun() {
+  palletteInnerContainer.innerHTML = "";
+  palletteButtonsContainer.innerHTML = "";
+  // APPENDING INNER CONTAINER
   palletteOuterContainer.appendChild(palletteInnerContainer);
 
   // ADDING PALLETTE
-  addPalletteFunction(palletteInnerContainer, colorsList);
+  addPalletteFunction(palletteInnerContainer, colorsList, true);
   // ADDING EVENT LISTENER
   modalListenkeys.canvasEventListener(palletteInnerContainer);
 

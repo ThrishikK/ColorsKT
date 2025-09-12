@@ -1,7 +1,7 @@
 "use strict";
 import { drawBars } from "./canvasBar.js";
 import { drawRgbPie } from "./canvasPie.js";
-import { extraction } from "../services/functions.js";
+import { extraction } from "../services/colorsRelated.js";
 
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");

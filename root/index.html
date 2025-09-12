@@ -4,6 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ColorsKt</title>
+    <!-- FAV-ICONS -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./favicon_io/favicon-16x16.png"
+    />
+    <!-- <link rel="manifest" href="/site.webmanifest" /> -->
+    <!-- STYLE SHEETS -->
     <link rel="stylesheet" href="src/css/main.css" />
     <link rel="stylesheet" href="src/css/components/navbar.css" />
     <link rel="stylesheet" href="src/css/components/helpers.css" />
@@ -11,7 +31,9 @@
     <link rel="stylesheet" href="src/css/components/pallette.css" />
     <link rel="stylesheet" href="src/css/components/savedPallettes.css" />
     <link rel="stylesheet" href="src/css/components/modal.css" />
-    <link rel="stylesheet" href="src/css/components/tintsAndShades.css" />
+    <link rel="stylesheet" href="src/css/components/tints.css" />
+    <link rel="stylesheet" href="src/css/components/shades.css" />
+    <link rel="stylesheet" href="src/css/components/gradients.css" />
   </head>
   <body>
     <main>
@@ -41,12 +63,38 @@
         <h2>Saved Pallettes</h2>
         <!-- <button class="prev">&#10094;</button> -->
       </section>
-      <!-- TINTS AND SHADES SECTION -->
+      <!-- TINTS  SECTION -->
+      <section id="tintsOuterContainer" class="flex-column section-container">
+        <h2>Tints of Generated Pallette</h2>
+      </section>
+      <!-- SHADES SECTION -->
+      <section id="shadesOuterContainer" class="flex-column section-container">
+        <h2>Shades of Generated Pallette</h2>
+      </section>
+      <!-- GRADIENTS -->
       <section
-        id="tintsAndShadesOuterContainer"
+        id="gradientsOuterContainer"
         class="flex-column section-container"
       >
-        <h2>Tints and Shades of Generated Pallette</h2>
+        <h2>Gradients of generated Pallette</h2>
+        <div id="gradientsInnerContainer" class="flex-row f-r-space-around">
+          <!-- LINEAR -->
+          <div id="linearGradient" class="flex-column gradient-helper">
+            <h3>Linear</h3>
+            <canvas id="linearGradientCanvas">
+              Your browser does not support the canvas element.
+            </canvas>
+            <button>Download</button>
+          </div>
+          <!-- RADIAL -->
+          <div id="radialGradient" class="flex-column gradient-helper">
+            <h3>Radial</h3>
+            <canvas id="radialGradientCanvas">
+              Your browser does not support the canvas element.
+            </canvas>
+            <button>Download</button>
+          </div>
+        </div>
       </section>
       <!-- MODAL START -->
       <div class="modal hidden">
@@ -76,6 +124,8 @@
       <div class="overlay hidden"></div>
       <!-- MODAL END -->
     </main>
+    <!-- <button>&#128274;</button>
+    <button>&#128275;</button> -->
 
     <script type="module" src="src/js/main.js"></script>
   </body>

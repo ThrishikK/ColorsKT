@@ -39,6 +39,13 @@
   cursor: pointer;
 }
 
+.lock-icon {
+  background-color: transparent;
+  align-self: flex-end;
+  padding: 0.4rem;
+  font-size: 1rem;
+}
+
 .pallette-btn {
 }
 
@@ -53,6 +60,10 @@
   .color-box {
     width: 10rem;
     height: 10rem;
+  }
+
+  .lock-icon {
+    font-size: 1.4rem;
   }
 }
 
@@ -69,6 +80,9 @@
   .color-box {
     width: 16rem;
     height: 16rem;
+  }
+  .lock-icon {
+    font-size: 1.6rem;
   }
 }
 

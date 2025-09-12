@@ -1,39 +1,37 @@
-function hexToRgb(hex) {
-  hex = hex.trim();
-  if (hex[0] === "#") hex = hex.slice(1);
-  if (hex.length === 3)
-    hex = hex
-      .split("")
-      .map((c) => c + c)
-      .join("");
-  if (!/^[0-9a-fA-F]{6}$/.test(hex)) return null;
-  const n = parseInt(hex, 16);
-  return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
+import modalListenkeys from "../components/modal.js";
+import { extraction, rgbToHex } from "./colorsRelated.js";
+import { updatingLocalStorage } from "./storage.js";
+import { palletteContainerFun } from "../components/pallette.js";
+
+// let colorsList = [];
+
+function handleLockClick(e) {
+  if (e.target.classList.contains("lock-icon")) {
+    const lockIconIndex = e.target.dataset.lockIconIndex;
+
+    updatingLocalStorage(colorsList, lockIconIndex);
+    console.log("Calling Palette Function");
+    palletteContainerFun();
+  }
 }
 
-function rgbToHex(r, g, b) {
-  const toHex = (n) => {
-    const hex = n.toString(16); // convert to hex
-    return hex.length === 1 ? "0" + hex : hex; // pad single digit
-  };
-
-  return "#" + toHex(r) + toHex(g) + toHex(b);
+function lockIconEventListener(container) {
+  container.addEventListener("click", handleLockClick);
 }
 
-// Example
-console.log(rgbToHex(255, 99, 71)); // "#ff6347"
+// Later, when you want to remove it:
+// container.removeEventListener("click", handleLockClick);
 
-export function extraction(colorCode) {
-  colorCode = colorCode.replace("rgb(", "").replace(")", "").split(",");
-  let r = parseInt(colorCode[0]);
-  let g = parseInt(colorCode[1]);
-  let b = parseInt(colorCode[2]);
-
-  return { r, g, b };
-}
-
-export function addPalletteFunction(palletteInnerContainer, colorsList) {
-  colorsList.map((value) => {
+export function addPalletteFunction(
+  palletteInnerContainer,
+  colorsList,
+  lockIcon = false
+) {
+  const storedObject = JSON.parse(localStorage.getItem("colorPalette"));
+  const { lockedArray } = storedObject;
+  console.log(colorsList);
+  colorsList.map((value, i) => {
+    // console.log(i);
     // COLOR BOX OUTER
     const palletteColorBoxOuter = document.createElement("div");
     palletteColorBoxOuter.classList.add("flex-column", "color-box-container");
@@ -43,6 +41,19 @@ export function addPalletteFunction(palletteInnerContainer, colorsList) {
     palletteColorBox.dataset.boxColor = value;
     palletteColorBox.style.backgroundColor = value;
     palletteColorBoxOuter.appendChild(palletteColorBox);
+    // ADDING LOCK
+    if (lockIcon) {
+      palletteColorBox.classList.add("flex-column");
+
+      //LOCK ICON ADDED TO palletteColorBox
+      const buttonEl = document.createElement("button");
+
+      buttonEl.innerHTML = lockedArray[i] ? "&#128274;" : "&#128275;";
+      buttonEl.classList.add("lock-icon");
+      buttonEl.dataset.lockIconIndex = i;
+      palletteColorBox.appendChild(buttonEl);
+    }
+
     // COLOR CODE
     const palletteCode = document.createElement("p");
     let { r, g, b } = extraction(value);
@@ -51,22 +62,63 @@ export function addPalletteFunction(palletteInnerContainer, colorsList) {
 
     palletteInnerContainer.appendChild(palletteColorBoxOuter);
   });
-}
-
-// RANDOM COLOR GENERATION
-export function generateRandomColor() {
-  const r = Math.floor(Math.random() * 255);
-  const g = Math.floor(Math.random() * 255);
-  const b = Math.floor(Math.random() * 255);
-
-  const colorGenerated = `rgb(${r},${g},${b})`;
-  return colorGenerated;
-}
-
-export function generatePallete() {
-  let generatedColorsList = [];
-  for (let i = 0; i < 5; i++) {
-    generatedColorsList.push(generateRandomColor());
+  // ADDING LOCK ICON EVENT LISTENER
+  if (lockIcon) {
+    palletteInnerContainer.removeEventListener("click", handleLockClick);
+    lockIconEventListener(palletteInnerContainer);
   }
-  return generatedColorsList;
+}
+
+function settingIndex(index, boundary) {
+  if (index > boundary) {
+    index = 0;
+  } else if (index < 0) {
+    index = boundary;
+  }
+  return index;
+}
+
+export function addingSectionPallette(
+  innerPalletteContainer,
+  index,
+  pallettesList
+) {
+  innerPalletteContainer.innerHTML = "";
+  const presentPallette = pallettesList[index];
+  // console.log(pallettesList);
+  innerPalletteContainer.classList.add(
+    "flex-row",
+    "saved-pallettes",
+    "pallette-inner-container"
+  );
+  innerPalletteContainer.dataset.savedIndex = index;
+  // CALLING EVENT LISTENER
+  modalListenkeys.canvasEventListener(innerPalletteContainer); // A=CALLING ADD PALLETTE FUNCTION
+  addPalletteFunction(innerPalletteContainer, presentPallette);
+}
+
+export function addCarouselButton(
+  sectionOuterContainer,
+  sectionInnerContainer,
+  sectionIndex,
+  pallettesList,
+  boundary,
+  value,
+  move
+) {
+  // ADDING CAROUSEL BUTTONS
+  // let boundary = pallettesList.length - 1;
+  const buttonEl = document.createElement("button");
+  buttonEl.innerHTML = value;
+  buttonEl.classList.add(move);
+  sectionOuterContainer.appendChild(buttonEl);
+  // ADDING EVENTLISTENER
+  buttonEl.addEventListener("click", function () {
+    if (move === "prev") sectionIndex--;
+    if (move === "next") sectionIndex++;
+    sectionIndex = settingIndex(sectionIndex, boundary);
+    console.log(move, sectionIndex);
+    // CALLING PALLETTE AGAIN WHEN FUNCTION CALLED
+    addingSectionPallette(sectionInnerContainer, sectionIndex, pallettesList);
+  });
 }

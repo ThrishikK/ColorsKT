@@ -4,6 +4,12 @@ h2 {
   color: var(--color-primary);
 }
 
+h3 {
+  font-size: 1.8rem;
+  margin: 1rem 0;
+  color: var(--color-primary);
+}
+
 p {
   font-size: 1.6rem;
   margin: 1rem 0;

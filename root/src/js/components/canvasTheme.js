@@ -54,12 +54,16 @@ function applyTheme(theme) {
     drawSun();
   }
   storedObject.theme = theme;
+  console.log(JSON.parse(localStorage.getItem("colorPalette")));
   localStorage.setItem("colorPalette", JSON.stringify(storedObject));
 }
 
-const storedObject = JSON.parse(localStorage.getItem("colorPalette"));
+const storedObject = JSON.parse(localStorage.getItem("colorPalette")) || {};
+
+// console.log(storedObject);
 // Load saved theme
-const savedTheme = storedObject.theme || "light";
+const savedTheme = storedObject?.theme || "light";
+// console.log(savedTheme);
 
 export function canvasThemeFun() {
   applyTheme(savedTheme);

@@ -1,0 +1,8 @@
+<!-- src/assets/icons/lock.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+     fill="currentColor" viewBox="0 0 24 24">
+  <path d="M17 8h-1V6a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v10a2 
+           2 0 0 0 2 2h10a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2Zm-6 
+           8.73V18h2v-1.27a2 2 0 1 0-2 0ZM9 8V6a3 3 0 1 1 6 
+           0v2H9Z"/>
+</svg>

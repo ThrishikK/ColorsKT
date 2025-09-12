@@ -1,0 +1,20 @@
+#gradientsOuterContainer {
+}
+
+#gradientsInnerContainer {
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 15.625em) {
+  #gradientsInnerContainer {
+    flex-wrap: wrap;
+  }
+}
+
+/* FROM 700PX */
+@media (min-width: 43.75em) {
+  #gradientsInnerContainer {
+    flex-wrap: nowrap;
+  }
+}
