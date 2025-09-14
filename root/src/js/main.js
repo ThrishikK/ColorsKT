@@ -8,6 +8,7 @@ import modalListenkeys, { closeModal } from "./components/modal.js";
 import { tintsContainerFun } from "./components/tints.js";
 import { shadesContainerFun } from "./components/shades.js";
 import { canvasGradientFun } from "./components/canvasGradient.js";
+import { colorCodeListener } from "./utils/evenListeners.js";
 
 const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".close-modal");
@@ -24,6 +25,8 @@ let initialColors =
   initialPallette;
 // CALLING FUNCTIONS
 settingLocalStorageFun();
+// EVENT LISTENERS TESTING
+colorCodeListener();
 // canvasThemeFun();
 palletteContainerFun();
 savedPallettesContainerFun();

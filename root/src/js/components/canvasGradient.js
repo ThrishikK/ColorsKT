@@ -1,5 +1,7 @@
 // import initialPallette from "../services/storage.js";
-
+const gradientsInnerContainer = document.getElementById(
+  "gradientsInnerContainer"
+);
 const linearGradientCanvas = document.getElementById("linearGradientCanvas");
 const radialGradientCanvas = document.getElementById("radialGradientCanvas");
 
@@ -84,6 +86,20 @@ function paintGradients(initialPallette) {
 window.addEventListener("resize", function () {
   const localData = JSON.parse(localStorage.getItem("colorPalette"));
   handleResizing(localData.initialPallette);
+});
+
+// GRADIENT DOWNLOAD EVENTLISTENER START 👶
+gradientsInnerContainer.addEventListener("click", function (e) {
+  if (e.target.classList.contains("gradient-download-btn")) {
+    const selectedCanvasText = e.target.dataset.gradientType;
+    const selectedCanvasId = document.getElementById(selectedCanvasText);
+    console.log(selectedCanvasId);
+    // DOWNLOADING
+    const link = document.createElement("a");
+    link.download = "gradient.png"; // file name
+    link.href = selectedCanvasId.toDataURL("image/png"); // convert to base64 PNG
+    link.click();
+  }
 });
 
 export function canvasGradientFun(initialPallette) {

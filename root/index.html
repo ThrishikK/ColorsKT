@@ -77,14 +77,22 @@
         class="flex-column section-container"
       >
         <h2>Gradients of generated Pallette</h2>
-        <div id="gradientsInnerContainer" class="flex-row f-r-space-around">
+        <div
+          id="gradientsInnerContainer"
+          class="flex-row f-r-space-around gradients-inner-container"
+        >
           <!-- LINEAR -->
           <div id="linearGradient" class="flex-column gradient-helper">
             <h3>Linear</h3>
             <canvas id="linearGradientCanvas">
               Your browser does not support the canvas element.
             </canvas>
-            <button>Download</button>
+            <button
+              data-gradient-type="linearGradientCanvas"
+              class="gradient-download-btn"
+            >
+              Download
+            </button>
           </div>
           <!-- RADIAL -->
           <div id="radialGradient" class="flex-column gradient-helper">
@@ -92,7 +100,12 @@
             <canvas id="radialGradientCanvas">
               Your browser does not support the canvas element.
             </canvas>
-            <button>Download</button>
+            <button
+              data-gradient-type="radialGradientCanvas"
+              class="gradient-download-btn"
+            >
+              Download
+            </button>
           </div>
         </div>
       </section>

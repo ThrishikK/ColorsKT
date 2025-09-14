@@ -16,7 +16,7 @@ let savedPallettes;
 function paintingSavedDOM() {
   let object = getPalette();
   savedPallettes = object.savedPallettes;
-  console.log(savedPallettes);
+  // console.log(savedPallettes);
   if (savedPallettes.length > 0) {
     palletteSavedOuterContainer.appendChild(innerPalletteContainer);
     // ADDING LEFT BUTTON

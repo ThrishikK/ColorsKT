@@ -52,7 +52,7 @@ export function addPalletteFunction(
 ) {
   const storedObject = JSON.parse(localStorage.getItem("colorPalette"));
   const { lockedArray } = storedObject;
-  console.log(colorsList);
+  // console.log(colorsList);
   colorsList.map((value, i) => {
     // console.log(i);
     // COLOR BOX OUTER
@@ -73,14 +73,20 @@ export function addPalletteFunction(
 
       buttonEl.innerHTML = lockedArray[i] ? "&#128274;" : "&#128275;";
       buttonEl.classList.add("lock-icon");
+      lockedArray[i] ? buttonEl.classList.add("color-locked") : null;
       buttonEl.dataset.lockIconIndex = i;
       palletteColorBox.appendChild(buttonEl);
     }
 
     // COLOR CODE
     const palletteCode = document.createElement("p");
+    palletteCode.classList.add("color-code-p-element");
     let { r, g, b } = extraction(value);
-    palletteCode.textContent = rgbToHex(r, g, b);
+    let rgbToHexResult = rgbToHex(r, g, b);
+    palletteCode.textContent = rgbToHexResult;
+    palletteCode.dataset.colorCodeIndex = 0;
+    palletteCode.dataset.hexCode = rgbToHexResult;
+
     palletteColorBoxOuter.append(palletteCode);
 
     palletteInnerContainer.appendChild(palletteColorBoxOuter);
