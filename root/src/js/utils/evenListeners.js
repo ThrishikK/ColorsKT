@@ -11,6 +11,7 @@ function indexSetting(current) {
 
 export function colorCodeListener() {
   document.addEventListener("click", function (e) {
+    // WHEN CLICKED ON TARGET COLOR CODE CHANGES BETWEEN RGB,HEX,HSL
     if (e.target.classList.contains("color-code-p-element")) {
       // console.log(e.target.dataset);
       const resultCodes = hexToRgbHsl(e.target.dataset.hexCode);
@@ -21,6 +22,7 @@ export function colorCodeListener() {
       // console.log(e.target.dataset.colorCodeIndex);
       e.target.textContent = resultCodes[currentIndex];
     }
+    //
   });
 }
 // COLOR CODES EVENTLISTENER END 👶

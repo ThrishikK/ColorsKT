@@ -9,40 +9,50 @@ const canvasBtnsContainer = document.querySelector(".canvas-btns-container");
 
 let selectedBox = "";
 let selectedChart = "bar";
-let other = "pie";
+let selectecdCanvas = "";
+let selectedBtn = "";
 
-function addingHiddenClasses(type, other) {
-  // console.log(type, other);
-  const selectecdCanvas = document.getElementById(`${type}Graph`);
-  const nonSelectecdCanvas = document.getElementById(`${other}Graph`);
-  // console.log(selectecdCanvas);
-  // console.log(nonSelectecdCanvas);
+function addingHiddenClasses(type) {
+  const allCanvases = document.querySelectorAll(".canvas-color-graph");
+  console.log(allCanvases);
+  const canvasBtns = document.querySelectorAll(".canvas-color-btn");
+  console.log(canvasBtns);
 
-  const activeBtn = document.querySelector(`.canvas-btn-${type}`);
-  const passiveBtn = document.querySelector(`.canvas-btn-${other}`);
+  allCanvases.forEach((eachCanvas) => {
+    eachCanvas.classList.add("hidden");
+  });
 
+  canvasBtns.forEach((eachBtn) => {
+    eachBtn.classList.add("passive-btn");
+  });
+
+  selectecdCanvas = document.getElementById(`${type}Graph`);
   selectecdCanvas.classList.remove("hidden");
-  nonSelectecdCanvas.classList.add("hidden");
+  selectedBtn = document.querySelector(`.canvas-btn-${type}`);
+  selectedBtn.classList.remove("passive-btn");
+  selectedBtn.classList.add("active-btn");
+  // const nonSelectecdCanvas = document.getElementById(`${other}Graph`);
 
-  // Button classes switching
-  activeBtn.classList.add("active-btn");
-  activeBtn.classList.remove("passive-btn");
-  passiveBtn.classList.add("passive-btn");
-  passiveBtn.classList.remove("active-btn");
+  // const activeBtn = document.querySelector(`.canvas-btn-${type}`);
+  // const passiveBtn = document.querySelector(`.canvas-btn-${other}`);
+
+  // nonSelectecdCanvas.classList.add("hidden");
+
+  // activeBtn.classList.remove("passive-btn");
+  // passiveBtn.classList.add("passive-btn");
+  // passiveBtn.classList.remove("active-btn");
 }
 
 function openModal(val, type) {
-  // console.log(type);
+  console.log(type);
   let colorCode = val;
   let { r, g, b } = extraction(colorCode);
 
   if (type === "bar") {
-    other = "pie";
-    addingHiddenClasses(type, other);
+    addingHiddenClasses(type);
     drawBars(r, g, b);
   } else {
-    other = "bar";
-    addingHiddenClasses(type, other);
+    addingHiddenClasses(type);
     drawRgbPie(r, g, b);
   }
   // CALLING CANVAS
@@ -53,13 +63,16 @@ function openModal(val, type) {
 }
 
 canvasBtnsContainer.addEventListener("click", function (e) {
-  if (e.target.classList.contains("canvas-btn")) {
+  if (e.target.classList.contains("canvas-color-btn")) {
     selectedChart = e.target.dataset.canvasType;
     openModal(selectedBox, selectedChart);
   }
 });
 
 export function closeModal() {
+  selectecdCanvas.classList.add("hidden");
+  selectedBtn.classList.add("passive-btn");
+
   modal.classList.add("hidden");
   overlay.classList.add("hidden");
 }

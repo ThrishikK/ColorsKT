@@ -20,16 +20,16 @@ btnCloseModal.addEventListener("click", closeModal);
 overlay.addEventListener("click", closeModal);
 
 //CHECKING IF INITTAL PALLETTE IS IN STORAGE
-let initialColors =
-  JSON.parse(localStorage.getItem("colorPalette"))?.initialPallette ||
-  initialPallette;
+// let initialColors =
+//   JSON.parse(localStorage.getItem("colorPalette"))?.initialPallette ||
+//   initialPallette;
 // CALLING FUNCTIONS
 settingLocalStorageFun();
 // EVENT LISTENERS TESTING
 colorCodeListener();
 // canvasThemeFun();
-palletteContainerFun();
+palletteContainerFun(initialPallette);
 savedPallettesContainerFun();
-tintsContainerFun(initialColors);
-shadesContainerFun(initialColors);
-canvasGradientFun(initialColors);
+tintsContainerFun(initialPallette);
+shadesContainerFun(initialPallette);
+canvasGradientFun(initialPallette);

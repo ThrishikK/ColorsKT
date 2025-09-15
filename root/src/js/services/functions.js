@@ -37,7 +37,7 @@ function lockIconEventListener(container, colorsList) {
 
       updatingLocalStorage(colorsList, lockIconIndex);
       console.log("Calling Palette Function");
-      palletteContainerFun();
+      palletteContainerFun(colorsList);
     }
   };
 

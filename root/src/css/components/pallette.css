@@ -52,6 +52,7 @@
 
 .color-code-p-element {
   cursor: pointer;
+  font-weight: bold;
 }
 
 .pallette-btn {

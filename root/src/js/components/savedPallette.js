@@ -17,8 +17,9 @@ function paintingSavedDOM() {
   let object = getPalette();
   savedPallettes = object.savedPallettes;
   // console.log(savedPallettes);
+  palletteSavedOuterContainer.appendChild(innerPalletteContainer);
   if (savedPallettes.length > 0) {
-    palletteSavedOuterContainer.appendChild(innerPalletteContainer);
+    innerPalletteContainer.innerHTML = "";
     // ADDING LEFT BUTTON
     addCarouselButton(
       palletteSavedOuterContainer,
@@ -44,7 +45,7 @@ function paintingSavedDOM() {
     const message = document.createElement("h3");
     message.textContent = "No Saved Palettes";
     message.classList.add("no-saved-message");
-    palletteSavedOuterContainer.appendChild(message);
+    innerPalletteContainer.appendChild(message);
   }
 }
 
