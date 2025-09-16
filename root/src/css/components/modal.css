@@ -26,7 +26,7 @@
   transform: translate(-50%, -50%);
 
   background-color: #ecf0f1;
-  padding: 6.5rem;
+  padding: 7.5rem;
   border-radius: 5px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   z-index: 10;
@@ -52,4 +52,25 @@
 
 canvas {
   border: 1px solid black;
+  margin-left: 1.5rem;
+}
+
+/* PICKER STYLES */
+#pickerGraph {
+  cursor: crosshair;
+}
+
+.picker-container {
+  width: 35rem;
+  height: 5rem;
+  border: 1px solid #000;
+  position: absolute;
+  left: 9rem;
+}
+
+.color-preview {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #000;
+  margin-top: 10px;
 }

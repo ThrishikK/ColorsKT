@@ -2,6 +2,7 @@
 import { drawBars } from "./canvasBar.js";
 import { drawRgbPie } from "./canvasPie.js";
 import { extraction } from "../services/colorsRelated.js";
+import { drawPicker } from "./colorPicker.js";
 
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
@@ -11,6 +12,19 @@ let selectedBox = "";
 let selectedChart = "bar";
 let selectecdCanvas = "";
 let selectedBtn = "";
+let pickerDomFlag = false;
+let swatchFlagForPicker = false;
+// CANVAS PICKER BUTTON DOM
+const canvasPickerBtn = document.createElement("button");
+canvasPickerBtn.textContent = "Picker";
+canvasPickerBtn.classList.add("canvas-color-btn", "canvas-btn-picker");
+canvasPickerBtn.dataset.canvasType = "picker";
+canvasPickerBtn.id = "canvasPickerBtnId";
+
+// AFTER PICKER BUTTON ADDED ,ADDING SWATCH AND SELECT BUTTONS
+const colorPickerContainer = document.createElement("div");
+colorPickerContainer.classList.add("picker-container");
+colorPickerContainer.id = "colorPickerContainerId";
 
 function addingHiddenClasses(type) {
   const allCanvases = document.querySelectorAll(".canvas-color-graph");
@@ -31,16 +45,9 @@ function addingHiddenClasses(type) {
   selectedBtn = document.querySelector(`.canvas-btn-${type}`);
   selectedBtn.classList.remove("passive-btn");
   selectedBtn.classList.add("active-btn");
-  // const nonSelectecdCanvas = document.getElementById(`${other}Graph`);
 
-  // const activeBtn = document.querySelector(`.canvas-btn-${type}`);
-  // const passiveBtn = document.querySelector(`.canvas-btn-${other}`);
-
-  // nonSelectecdCanvas.classList.add("hidden");
-
-  // activeBtn.classList.remove("passive-btn");
-  // passiveBtn.classList.add("passive-btn");
-  // passiveBtn.classList.remove("active-btn");
+  if (type === "picker") {
+  }
 }
 
 function openModal(val, type) {
@@ -51,9 +58,12 @@ function openModal(val, type) {
   if (type === "bar") {
     addingHiddenClasses(type);
     drawBars(r, g, b);
-  } else {
+  } else if (type === "pie") {
     addingHiddenClasses(type);
     drawRgbPie(r, g, b);
+  } else {
+    addingHiddenClasses(type);
+    drawPicker();
   }
   // CALLING CANVAS
   //  1 BAR GRAPH
@@ -62,8 +72,29 @@ function openModal(val, type) {
   overlay.classList.remove("hidden");
 }
 
+function updatingModalDom() {
+  if (swatchFlagForPicker) {
+    modal.appendChild(colorPickerContainer);
+  } else {
+    const colorPickerContainerId = document.getElementById(
+      "colorPickerContainerId"
+    );
+    console.log(colorPickerContainerId);
+    if (colorPickerContainerId) {
+      modal.removeChild(colorPickerContainer);
+    }
+  }
+}
+
 canvasBtnsContainer.addEventListener("click", function (e) {
   if (e.target.classList.contains("canvas-color-btn")) {
+    if (e.target.classList.contains("canvas-btn-picker")) {
+      swatchFlagForPicker = true;
+    } else {
+      swatchFlagForPicker = false;
+    }
+    updatingModalDom();
+    //
     selectedChart = e.target.dataset.canvasType;
     openModal(selectedBox, selectedChart);
   }
@@ -77,9 +108,28 @@ export function closeModal() {
   overlay.classList.add("hidden");
 }
 
-function canvasEventListener(palletteInnerContainer) {
+function addingPickerBtn() {
+  if (pickerDomFlag) {
+    canvasBtnsContainer.appendChild(canvasPickerBtn);
+    // modal.appendChild(colorPickerContainer);
+  } else {
+    const canvasPickerBtnId = document.getElementById("colorPickerContainerId");
+    if (canvasPickerBtnId) {
+      canvasBtnsContainer.removeChild(canvasPickerBtn);
+    }
+    // modal.removeChild(colorPickerContainer);
+  }
+}
+
+function canvasEventListener(palletteInnerContainer, isFromGenerate = false) {
   palletteInnerContainer.addEventListener("click", function (e) {
     if (e.target.classList.contains("color-box")) {
+      if (e.target.dataset.fromGenerate) {
+        pickerDomFlag = true;
+      } else {
+        pickerDomFlag = false;
+      }
+      addingPickerBtn();
       selectedBox = e.target.dataset.boxColor;
       openModal(selectedBox, selectedChart);
     }

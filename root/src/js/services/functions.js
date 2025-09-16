@@ -67,7 +67,7 @@ export function addPalletteFunction(
     // ADDING LOCK
     if (lockIcon) {
       palletteColorBox.classList.add("flex-column");
-
+      palletteColorBox.dataset.fromGenerate = true;
       //LOCK ICON ADDED TO palletteColorBox
       const buttonEl = document.createElement("button");
 
@@ -121,7 +121,7 @@ export function addingSectionPallette(
   );
   innerPalletteContainer.dataset.savedIndex = index;
   // CALLING EVENT LISTENER
-  modalListenkeys.canvasEventListener(innerPalletteContainer); // A=CALLING ADD PALLETTE FUNCTION
+  modalListenkeys.canvasEventListener(innerPalletteContainer, false); // A=CALLING ADD PALLETTE FUNCTION
   addPalletteFunction(innerPalletteContainer, presentPallette);
 }
 

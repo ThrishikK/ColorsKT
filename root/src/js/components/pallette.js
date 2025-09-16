@@ -58,7 +58,7 @@ export function palletteContainerFun(colorsList) {
   // ADDING PALLETTE
   addPalletteFunction(palletteInnerContainer, colorsList, true);
   // ADDING EVENT LISTENER
-  modalListenkeys.canvasEventListener(palletteInnerContainer);
+  modalListenkeys.canvasEventListener(palletteInnerContainer, true);
 
   //  ADDING  BUTTONS
   addPalletteButtons();
