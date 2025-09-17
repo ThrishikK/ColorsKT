@@ -45,9 +45,10 @@
 
 .canvas-btns-container {
   position: absolute;
-  align-items: center;
-  top: 15rem;
-  left: 1rem;
+  top: 2rem;
+  left: 18rem;
+  width: 20rem;
+  justify-content: space-around;
 }
 
 canvas {
@@ -62,15 +63,27 @@ canvas {
 
 .picker-container {
   width: 35rem;
-  height: 5rem;
+  height: 7rem;
   border: 1px solid #000;
   position: absolute;
   left: 9rem;
+  /*  */
 }
 
 .color-preview {
-  width: 50px;
-  height: 50px;
+  width: 5rem;
+  height: 5rem;
   border: 1px solid #000;
-  margin-top: 10px;
+  /* margin-top: 10px; */
+  margin: 0.5rem;
+  background-color: rgb(53, 166, 255);
+}
+
+.canvas-select-btn {
+  background-color: var(--color-primary);
+  color: var(--color-grey);
+}
+
+.canvas-select-btn:hover {
+  background-color: var(--color-primary-hover);
 }

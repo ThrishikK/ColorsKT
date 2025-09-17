@@ -14,7 +14,13 @@ const palletteButtonsContainer = document.getElementById(
 );
 
 // FILE CODE
-let colorsList = "";
+let colorsList = [
+  "rgb(3, 4, 94)",
+  "rgb(0, 119, 182)",
+  "rgb(0, 180, 216)",
+  "rgb(144, 224, 239)",
+  "rgb(202, 240, 248)",
+];
 // FUNCTION TO ERASE AND RE-GENERATE PALLETTE
 function erasingPalletteDOM() {
   colorsList = generatePallete();
@@ -39,6 +45,10 @@ function addSavePalletteButton() {
   palletteButtonsContainer.appendChild(palletteSaveButton);
   // ADDING EVENT LISTENERT TO BUTTON
   palletteSaveButton.addEventListener("click", () => {
+    colorsList = JSON.parse(
+      localStorage.getItem("colorPalette")
+    ).initialPallette;
+    console.log(colorsList);
     savePalette(colorsList);
   });
 }

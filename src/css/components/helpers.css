@@ -8,6 +8,16 @@
   flex-direction: column;
 }
 
+.r-c-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.c-center-r-sp-between {
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .section-container {
   align-items: center;
   justify-content: center;

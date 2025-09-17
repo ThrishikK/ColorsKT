@@ -53,16 +53,15 @@ function applyTheme(theme) {
     body.classList.remove("dark");
     drawSun();
   }
+
+  const storedObject = JSON.parse(localStorage.getItem("colorPalette"));
   storedObject.theme = theme;
-  console.log(JSON.parse(localStorage.getItem("colorPalette")));
+  // console.log(JSON.parse(localStorage.getItem("colorPalette")));
   localStorage.setItem("colorPalette", JSON.stringify(storedObject));
 }
 
-const storedObject = JSON.parse(localStorage.getItem("colorPalette")) || {};
-
-// console.log(storedObject);
 // Load saved theme
-const savedTheme = storedObject?.theme || "light";
+const savedTheme = "dark";
 // console.log(savedTheme);
 
 export function canvasThemeFun() {

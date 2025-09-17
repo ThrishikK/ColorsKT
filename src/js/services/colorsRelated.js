@@ -23,6 +23,13 @@ export function generateRandomColor() {
   return colorGenerated;
 }
 
+export function reRender(colorsList) {
+  tintsContainerFun(colorsList);
+  shadesContainerFun(colorsList);
+  updatingLocalStorage(colorsList);
+  canvasGradientFun(colorsList);
+}
+
 export function generatePallete() {
   const storedObject = JSON.parse(localStorage.getItem("colorPalette"));
   const { initialPallette, lockedArray } = storedObject;
@@ -33,10 +40,12 @@ export function generatePallete() {
       ? generatedColorsList.push(initialPallette[i])
       : generatedColorsList.push(generateRandomColor());
   }
-  tintsContainerFun(generatedColorsList);
-  shadesContainerFun(generatedColorsList);
-  updatingLocalStorage(generatedColorsList);
-  canvasGradientFun(generatedColorsList);
+
+  storedObject.initialPallette = generatedColorsList;
+  localStorage.setItem("colorPalette", JSON.stringify(storedObject));
+  // console.log(generatedColorsList);
+  reRender(generatedColorsList);
+
   return generatedColorsList;
 }
 

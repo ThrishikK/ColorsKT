@@ -10,17 +10,6 @@ let initialPallette = [
 
 let storedData;
 let storageObject;
-// LOCAL STORAGE INITIALIZATION
-
-// export function localStorageInitialization() {
-//   storageObject = {
-//     initialPallette,
-//     savedPallettes: [],
-//     theme: "light",
-//     lockedArray: [false, false, false, false, false],
-//   };
-//   localStorage.setItem("colorPalette", JSON.stringify(storageObject));
-// }
 
 // Try to load from localStorage
 export function settingLocalStorageFun() {
@@ -29,9 +18,10 @@ export function settingLocalStorageFun() {
   storageObject = storedData || {
     initialPallette,
     savedPallettes: [],
-    theme: "light",
+    theme: "dark",
     lockedArray: [false, false, false, false, false],
   };
+  // console.log(storageObject);
 
   localStorage.setItem("colorPalette", JSON.stringify(storageObject));
 }

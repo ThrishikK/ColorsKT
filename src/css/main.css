@@ -8,7 +8,9 @@
 }
 
 body.dark {
---color-primary: #4a90e2;     /* bright blue for accents */
+--color-primary: rgb(74, 144, 226);  
+--color-primary-hover : rgb(53, 166, 255);
+/* bright blue for accents */
 --color-background: #121212;  /* very dark gray, not pure black */
 --color-text: #ecf0f1;        /* light gray/white for readability */
 

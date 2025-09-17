@@ -68,6 +68,7 @@ export function addPalletteFunction(
     if (lockIcon) {
       palletteColorBox.classList.add("flex-column");
       palletteColorBox.dataset.fromGenerate = true;
+      palletteColorBox.dataset.generateIndex = i;
       //LOCK ICON ADDED TO palletteColorBox
       const buttonEl = document.createElement("button");
 

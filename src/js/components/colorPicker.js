@@ -4,6 +4,18 @@ const ctx = canvas.getContext("2d");
 canvas.width = 350;
 canvas.height = 350;
 
+export function rgbToHex(r, g, b) {
+  return (
+    "#" +
+    [r, g, b]
+      .map((x) => {
+        const hex = x.toString(16);
+        return hex.length === 1 ? "0" + hex : hex;
+      })
+      .join("")
+  );
+}
+
 export function drawPicker() {
   // Draw base hue gradient (left to right)
   const gradientH = ctx.createLinearGradient(0, 0, canvas.width, 0);
@@ -25,4 +37,33 @@ export function drawPicker() {
   gradientV.addColorStop(1, "rgba(0,0,0,1)");
   ctx.fillStyle = gradientV;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+export function pickColor(e) {
+  console.log(e);
+  const x = e.offsetX;
+  const y = e.offsetY;
+  const pixel = ctx.getImageData(x, y, 1, 1).data;
+  const rgb = `rgb(${pixel[0]}, ${pixel[1]}, ${pixel[2]})`;
+  const hex = rgbToHex(pixel[0], pixel[1], pixel[2]);
+  return rgb;
+  // preview.style.background = rgb;
+  // colorValue.textContent = `${rgb} | ${hex}`;
+}
+
+// Handle click and drag
+export function colorPickerEvenListener(swatchText, pickerSwatchEl) {
+  let selectedColor;
+  canvas.addEventListener("click", (e) => {
+    selectedColor = pickColor(e);
+    swatchText.textContent = selectedColor;
+    pickerSwatchEl.style.backgroundColor = selectedColor;
+  });
+  canvas.addEventListener("mousemove", (e) => {
+    if (e.buttons > 0) {
+      selectedColor = pickColor(e);
+      pickerSwatchEl.style.backgroundColor = selectedColor;
+      swatchText.textContent = selectedColor;
+    }
+  });
 }
