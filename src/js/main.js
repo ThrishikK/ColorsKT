@@ -27,7 +27,7 @@ overlay.addEventListener("click", closeModal);
 settingLocalStorageFun();
 // EVENT LISTENERS TESTING
 colorCodeListener();
-// canvasThemeFun();
+canvasThemeFun();
 palletteContainerFun(initialPallette);
 savedPallettesContainerFun();
 tintsContainerFun(initialPallette);
