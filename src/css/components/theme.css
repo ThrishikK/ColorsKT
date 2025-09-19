@@ -1,0 +1,17 @@
+#themeOuterContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--color-background);
+  /* 000 */
+  margin: 1rem;
+}
+
+.themeCanvasContainer {
+  justify-self: flex-end;
+}
+
+#themeCanvas {
+  cursor: pointer;
+  border: 0;
+}

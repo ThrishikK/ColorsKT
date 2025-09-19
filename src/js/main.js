@@ -9,6 +9,7 @@ import { tintsContainerFun } from "./components/tints.js";
 import { shadesContainerFun } from "./components/shades.js";
 import { canvasGradientFun } from "./components/canvasGradient.js";
 import { colorCodeListener } from "./utils/evenListeners.js";
+import { navbarListener } from "./utils/navbar.js";
 
 const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".close-modal");
@@ -25,9 +26,13 @@ overlay.addEventListener("click", closeModal);
 //   initialPallette;
 // CALLING FUNCTIONS
 settingLocalStorageFun();
+// NAVBAR
+navbarListener();
+canvasThemeFun();
 // EVENT LISTENERS TESTING
 colorCodeListener();
-canvasThemeFun();
+
+// RENDERING PALLETTES BELOW
 palletteContainerFun(initialPallette);
 savedPallettesContainerFun();
 tintsContainerFun(initialPallette);

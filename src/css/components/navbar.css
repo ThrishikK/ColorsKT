@@ -1,17 +1,72 @@
-#navbarOuterContainer {
+.navbar {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  background-color: var(--color-background);
-  /* 000 */
-  margin: 1rem;
+  align-items: center;
+  background: var(--color-background);
+  padding: 10px 20px;
+  margin-top: 1rem;
 }
 
-.themeCanvasContainer {
-  justify-self: flex-end;
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--color-text);
 }
 
-#themeCanvas {
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  /* color: white; */
+  color: var(--color-text);
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.nav-links li a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
   cursor: pointer;
-  border: 0;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 35px;
+  background: white;
+  margin: 4px;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #333;
+    flex-direction: column;
+    width: 200px;
+    text-align: right;
+    padding: 10px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
 }
