@@ -7,6 +7,13 @@ let initialPallette = [
   "rgb(144, 224, 239)",
   "rgb(202, 240, 248)",
 ];
+let customColorsList = [
+  "rgb(255,255,255)",
+  "rgb(255,255,255)",
+  "rgb(255,255,255)",
+  "rgb(255,255,255)",
+  "rgb(255,255,255)",
+];
 
 let storedData;
 let storageObject;
@@ -20,6 +27,7 @@ export function settingLocalStorageFun() {
     savedPallettes: [],
     theme: "dark",
     lockedArray: [false, false, false, false, false],
+    customColorsList,
   };
   // console.log(storageObject);
 

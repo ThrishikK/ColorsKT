@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="src/css/components/elements.css" />
     <link rel="stylesheet" href="src/css/components/pallette.css" />
     <link rel="stylesheet" href="src/css/components/savedPallettes.css" />
+    <link rel="stylesheet" href="src/css/components/customPallettes.css" />
     <link rel="stylesheet" href="src/css/components/modal.css" />
     <link rel="stylesheet" href="src/css/components/tints.css" />
     <link rel="stylesheet" href="src/css/components/shades.css" />
@@ -50,6 +51,11 @@
           </li>
           <li>
             <a class="anchor-element" href="#savedOuterContainer">Saved</a>
+          </li>
+          <li>
+            <a class="anchor-element" href="#customPalletteOuterContainer"
+              >Custom Picker</a
+            >
           </li>
           <li>
             <a class="anchor-element" href="#tintsOuterContainer">Tints</a>
@@ -94,6 +100,26 @@
       <section id="savedOuterContainer" class="flex-column section-container">
         <h2>Saved Pallettes</h2>
         <!-- <button class="prev">&#10094;</button> -->
+      </section>
+      <!-- CUSTOM PALLETTE SECTION -->
+      <section
+        id="customPalletteOuterContainer"
+        class="flex-column section-container"
+      >
+        <h2>Custom Pallette</h2>
+        <div class="magnify-outer-container">
+          <!--  -->
+          <canvas id="customCanvas" width="400" height="400"></canvas>
+
+          <div class="color-magnifier-preview">
+            <canvas id="magnifier" width="100" height="100"></canvas>
+            <div id="preview"></div>
+            <button class="magnify-select-btn">Select</button>
+          </div>
+        </div>
+        <button id="magniferSaveBtn">Save Below custom pallette</button>
+        <div id="customPalletteInnerContainer"></div>
+        <!-- COLOR PALLETTE CONTAINER -->
       </section>
       <!-- TINTS  SECTION -->
       <section id="tintsOuterContainer" class="flex-column section-container">

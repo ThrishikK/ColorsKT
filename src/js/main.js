@@ -10,6 +10,7 @@ import { shadesContainerFun } from "./components/shades.js";
 import { canvasGradientFun } from "./components/canvasGradient.js";
 import { colorCodeListener } from "./utils/evenListeners.js";
 import { navbarListener } from "./utils/navbar.js";
+import { customPalletteFun } from "./components/customPallete.js";
 
 const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".close-modal");
@@ -35,6 +36,7 @@ colorCodeListener();
 // RENDERING PALLETTES BELOW
 palletteContainerFun(initialPallette);
 savedPallettesContainerFun();
+customPalletteFun();
 tintsContainerFun(initialPallette);
 shadesContainerFun(initialPallette);
 canvasGradientFun(initialPallette);

@@ -123,7 +123,7 @@ export function addingSectionPallette(
   innerPalletteContainer.dataset.savedIndex = index;
   // CALLING EVENT LISTENER
   modalListenkeys.canvasEventListener(innerPalletteContainer, false); // A=CALLING ADD PALLETTE FUNCTION
-  addPalletteFunction(innerPalletteContainer, presentPallette);
+  addPalletteFunction(innerPalletteContainer, presentPallette, false);
 }
 
 export function addCarouselButton(
