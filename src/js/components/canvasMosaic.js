@@ -1,5 +1,3 @@
-// import initialPallette from "../services/storage";
-
 const mosaicCanvas = document.getElementById("mosaicCanvas");
 const ctx = mosaicCanvas.getContext("2d");
 
