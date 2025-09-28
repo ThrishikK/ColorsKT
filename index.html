@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="src/css/components/tints.css" />
     <link rel="stylesheet" href="src/css/components/shades.css" />
     <link rel="stylesheet" href="src/css/components/gradients.css" />
+    <link rel="stylesheet" href="src/css/components/mosaic.css" />
   </head>
   <body>
     <main>
@@ -67,6 +68,9 @@
             <a class="anchor-element" href="#gradientsOuterContainer"
               >Gradient</a
             >
+          </li>
+          <li>
+            <a class="anchor-element" href="#mosaicOuterContainer">Mosaic</a>
           </li>
         </ul>
         <div class="hamburger">
@@ -165,6 +169,14 @@
               Download
             </button>
           </div>
+        </div>
+      </section>
+      <!-- MOSAIC -->
+      <section id="mosaicOuterContainer" class="flex-column section-container">
+        <h2>Mosaic of Generated Pallette</h2>
+        <div class="flex-column r-c-center" id="mosaicInnerContainer">
+          <canvas id="mosaicCanvas"></canvas>
+          <button id="mosaicDownloadBtn">Download</button>
         </div>
       </section>
       <!-- MODAL START -->

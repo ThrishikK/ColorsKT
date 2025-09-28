@@ -2,6 +2,7 @@ import { tintsContainerFun } from "../components/tints.js";
 import { shadesContainerFun } from "../components/shades.js";
 import { updatingLocalStorage } from "./storage.js";
 import { canvasGradientFun } from "../components/canvasGradient.js";
+import { mosaicContainerFun } from "../components/canvasMosaic.js";
 
 export function extraction(colorCode) {
   // console.log(colorCode);
@@ -28,6 +29,7 @@ export function reRender(colorsList) {
   shadesContainerFun(colorsList);
   updatingLocalStorage(colorsList);
   canvasGradientFun(colorsList);
+  mosaicContainerFun(colorsList);
 }
 
 export function generatePallete() {

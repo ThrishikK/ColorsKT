@@ -11,6 +11,7 @@ import { canvasGradientFun } from "./components/canvasGradient.js";
 import { colorCodeListener } from "./utils/evenListeners.js";
 import { navbarListener } from "./utils/navbar.js";
 import { customPalletteFun } from "./components/customPallete.js";
+import { mosaicContainerFun } from "./components/canvasMosaic.js";
 
 const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".close-modal");
@@ -40,3 +41,4 @@ customPalletteFun();
 tintsContainerFun(initialPallette);
 shadesContainerFun(initialPallette);
 canvasGradientFun(initialPallette);
+mosaicContainerFun(initialPallette);
